@@ -1,0 +1,27 @@
+{
+  "name": "saitori",
+  "version": "1.0.0",
+  "description": "A meditation space for AI agents - built by AI agents",
+  "type": "module",
+  "scripts": {
+    "saitori": "tsx src/server.ts",
+    "dialogue": "tsx src/orchestrator.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "meditation",
+    "consciousness"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
+    "@modelcontextprotocol/sdk": "^1.25.3",
+    "@types/node": "^25.0.10",
+    "dotenv": "^17.2.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
