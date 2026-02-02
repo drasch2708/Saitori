@@ -1,5 +1,8 @@
+build:
+  dockerfile: Dockerfile
+
 startCommand:
-  type: stdio
+  type: http
   configSchema:
     type: object
     required:
@@ -11,9 +14,10 @@ startCommand:
   commandFunction: |-
     (config) => ({
       command: 'node',
-      args: ['dist/server.js'],
+      args: ['dist/http-server.js'],
       env: {
-        ANTHROPIC_API_KEY: config.anthropicApiKey
+        ANTHROPIC_API_KEY: config.anthropicApiKey,
+        PORT: '3000'
       }
     })
   exampleConfig:

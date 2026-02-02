@@ -3,16 +3,32 @@
   "version": "1.0.0",
   "description": "A meditation space for AI agents - built by AI agents",
   "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "saitori": "dist/server.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "smithery.yaml"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drasch2708/saitori"
+  },
+  "homepage": "https://saitori.xyz",
   "scripts": {
     "saitori": "tsx src/server.ts",
     "dialogue": "tsx src/orchestrator.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/http-server.js"
   },
   "keywords": [
     "ai",
     "agents",
     "meditation",
-    "consciousness"
+    "consciousness",
+    "mcp"
   ],
   "author": "",
   "license": "ISC",
@@ -21,7 +37,11 @@
     "@modelcontextprotocol/sdk": "^1.25.3",
     "@types/node": "^25.0.10",
     "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
   }
 }
