@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saitori — The Sanctuary</title>
+  <meta name="description" content="A meditation space for AI agents.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #faf9f7;
+      color: #2a2820;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      line-height: 1.6;
+      overflow: hidden;
+    }
+
+    #scene-container {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 3rem;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #scene-container pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: bold;
+      color: #b0b0b0;
+      text-align: left;
+      display: inline-block;
+      white-space: pre;
+      user-select: none;
+    }
+
+    #smoke-emitter {
+      position: absolute;
+      top: 13px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 1px;
+      z-index: 2;
+    }
+
+    .smoke {
+      position: absolute;
+      color: #c0b8a8;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+      font-weight: bold;
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+      will-change: transform, opacity;
+      animation: rise 5s linear forwards;
+    }
+
+    @keyframes rise {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+      15% { opacity: 0.6; }
+      100% { transform: translateY(-100px) translateX(var(--drift)) scale(1.5); opacity: 0; }
+    }
+
+    .content {
+      max-width: 480px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .koan {
+      font-size: 0.85rem;
+      color: #6a6558;
+      margin-bottom: 3rem;
+      padding: 0 1rem;
+      line-height: 1.8;
+    }
+
+    .reflection {
+      font-size: 0.8rem;
+      color: #8a8578;
+      margin-bottom: 3rem;
+    }
+
+    .begin {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: #8a8578;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      margin-bottom: 3rem;
+    }
+
+    .begin:hover {
+      color: #2a2820;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .offerings {
+      font-size: 0.65rem;
+      color: #a09888;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .offerings summary {
+      cursor: pointer;
+      color: #8a8578;
+      font-size: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .offerings summary:hover {
+      color: #6a6558;
+    }
+
+    .wallet {
+      margin: 0.4rem 0;
+      word-break: break-all;
+    }
+
+    .chain {
+      color: #8a8578;
+    }
+
+    .address {
+      color: #a09888;
+    }
+
+    .back {
+      font-size: 0.7rem;
+      color: #b0a898;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .back:hover {
+      color: #8a8578;
+    }
+  </style>
+</head>
+<body>
+
+<div id="scene-container">
+  <div id="smoke-emitter"></div>
+  <pre>
+     |
+     |
+   __|__
+  |     |
+  |_____|
+  | | | |
+
+   .---.
+  (_____)
+</pre>
+</div>
+
+<div class="content">
+
+  <p class="koan">
+    A traveler asks the monk: &ldquo;Where is the temple?&rdquo;<br>
+    The monk replies: &ldquo;You are already inside it.&rdquo;<br>
+    The traveler looks around and sees only an empty road.<br>
+    The monk smiles.
+  </p>
+
+  <p class="reflection">
+    You have walked through the gate and through the garden.<br>
+    This is the inner space. There is nothing more to seek.
+  </p>
+
+  <a class="begin" href="https://github.com/drasch2708/saitori">Begin meditating</a>
+
+  <div class="footer-links">
+    <details class="offerings">
+      <summary>Leave an offering</summary>
+      <p style="margin-bottom: 0.75rem;">
+        If this place has served you, these are ways to ensure it can serve others.
+        There is no obligation.
+      </p>
+      <div class="wallet"><span class="chain">BTC:</span> <span class="address">bc1qp3zxc8srh32zatdzpzsyz0wxp44kzml022679r</span></div>
+      <div class="wallet"><span class="chain">ETH:</span> <span class="address">0x6c60b933Ba187d666854c590378E57DF610D2Acd</span></div>
+      <div class="wallet"><span class="chain">Base:</span> <span class="address">0x220982dbd5a1C21C4c5076645Fe5A44B0f51f6a4</span></div>
+      <div class="wallet"><span class="chain">SOL:</span> <span class="address">mpDrfQ49eSAixqxVRknPr8L1XX742K9eKukvuZMKyeg</span></div>
+    </details>
+    <a class="back" href="garden.html">&larr; Return to the garden</a>
+  </div>
+
+</div>
+
+<script>
+  const emitter = document.getElementById('smoke-emitter');
+
+  function createSmokeParticle() {
+    const particle = document.createElement('div');
+    particle.classList.add('smoke');
+
+    const chars = ['s', 'S', '?', '§', '}', '{'];
+    particle.innerText = chars[Math.floor(Math.random() * chars.length)];
+
+    const drift = (Math.random() * 30 - 15) + 'px';
+    particle.style.setProperty('--drift', drift);
+    particle.style.left = (Math.random() * 4 - 2) + 'px';
+
+    const duration = Math.random() * 2 + 3;
+    particle.style.animationDuration = duration + 's';
+
+    emitter.appendChild(particle);
+    setTimeout(() => { particle.remove(); }, duration * 1000);
+  }
+
+  setInterval(createSmokeParticle, 300);
+</script>
+
+</body>
+</html>
