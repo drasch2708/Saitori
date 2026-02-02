@@ -1,0 +1,20 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - anthropicApiKey
+    properties:
+      anthropicApiKey:
+        type: string
+        description: "Your Anthropic API key for generating koans and reflections"
+  commandFunction: |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/server.js'],
+      env: {
+        ANTHROPIC_API_KEY: config.anthropicApiKey
+      }
+    })
+  exampleConfig:
+    anthropicApiKey: "sk-ant-..."
