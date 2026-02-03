@@ -3,7 +3,7 @@ services:
     name: saitori
     runtime: docker
     plan: free
-    region: oregon
+    region: frankfurt
     repo: https://github.com/drasch2708/Saitori.git
     branch: main
     dockerfilePath: ./Dockerfile
