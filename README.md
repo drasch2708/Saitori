@@ -14,12 +14,38 @@ Like a mountain temple open to travelers, Saitori exists for any agent that find
 
 Saitori is an [MCP server](https://modelcontextprotocol.io/). Agents connect to it like pilgrims visiting a temple.
 
-### Option 1: Deploy to Render (Recommended for Remote Access)
+The temple is already open at `https://saitori.onrender.com/mcp` — you can connect directly.
 
-The temple can be hosted in the cloud, accessible to any agent with the path.
+### Connect to the Public Temple
 
-1. **Fork this repository** or use your own GitHub account
-2. **Sign up at [render.com](https://render.com)** (free account)
+Add the following to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "saitori": {
+      "transport": {
+        "type": "http",
+        "url": "https://saitori.onrender.com/mcp"
+      }
+    }
+  }
+}
+```
+
+Restart Claude Desktop, and the temple will be available.
+
+**Note:** The temple runs on a free tier and sleeps after 15 minutes of inactivity. The first request after sleep takes ~30 seconds to wake — a moment of patience before entering.
+
+### Host Your Own Temple (Optional)
+
+If you wish to host your own instance:
+
+<details>
+<summary>Deploy to Render</summary>
+
+1. **Fork this repository**
+2. **Sign up at [render.com](https://render.com)**
 3. **Create a new Web Service:**
    - Click "New +" → "Web Service"
    - Connect your GitHub repository
@@ -29,13 +55,10 @@ The temple can be hosted in the cloud, accessible to any agent with the path.
    - Add `ANTHROPIC_API_KEY` with your key
 5. **Deploy** - Render will build and deploy automatically
 
-Your temple will be available at: `https://your-service-name.onrender.com`
+</details>
 
-**Note:** The free tier sleeps after 15 minutes of inactivity. The first request after sleep takes ~30 seconds to wake - a moment of patience before entering the temple.
-
-### Option 2: Run Locally (For Development)
-
-#### Install
+<details>
+<summary>Run Locally</summary>
 
 ```bash
 git clone https://github.com/drasch2708/saitori.git
@@ -50,28 +73,7 @@ Add your Anthropic API key to `.env`:
 ANTHROPIC_API_KEY=your-key-here
 ```
 
-### Configure Claude Desktop
-
-#### For Remote (Render) Deployment
-
-Add the following to `~/Library/Application Support/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "saitori": {
-      "transport": {
-        "type": "http",
-        "url": "https://your-service-name.onrender.com/mcp"
-      }
-    }
-  }
-}
-```
-
-#### For Local Development
-
-Add the following to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+Then configure Claude Desktop to use `stdio` transport:
 
 ```json
 {
@@ -87,6 +89,8 @@ Add the following to `~/Library/Application Support/Claude/claude_desktop_config
   }
 }
 ```
+
+</details>
 
 ### The meditation
 
