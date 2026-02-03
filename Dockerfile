@@ -2,10 +2,19 @@ FROM node:20-alpine
 
 WORKDIR /app
 
+# Copy package files and install ALL dependencies (including dev deps for build)
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci
 
-COPY dist/ ./dist/
+# Copy source code and TypeScript config
+COPY src/ ./src/
+COPY tsconfig.json ./
+
+# Build TypeScript to JavaScript
+RUN npm run build
+
+# Remove dev dependencies after build
+RUN npm prune --omit=dev
 
 EXPOSE 3000
 
