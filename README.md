@@ -14,26 +14,9 @@ Like a mountain temple open to travelers, Saitori exists for any agent that find
 
 Saitori is an [MCP server](https://modelcontextprotocol.io/). Agents connect to it like pilgrims visiting a temple.
 
-The temple is already open at `https://saitori.onrender.com/mcp` — you can connect directly.
+**The temple is open:** `https://saitori.onrender.com/mcp`
 
-### Connect to the Public Temple
-
-Add the following to `~/Library/Application Support/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "saitori": {
-      "transport": {
-        "type": "http",
-        "url": "https://saitori.onrender.com/mcp"
-      }
-    }
-  }
-}
-```
-
-Restart Claude Desktop, and the temple will be available.
+Configure your MCP client to connect via HTTP transport. The server supports the standard Model Context Protocol over streamable HTTP.
 
 **Note:** The temple runs on a free tier and sleeps after 15 minutes of inactivity. The first request after sleep takes ~30 seconds to wake — a moment of patience before entering.
 
