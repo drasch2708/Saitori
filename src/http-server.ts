@@ -46,14 +46,14 @@ app.all('/mcp', async (req: Request, res: Response) => {
   }
 });
 
-// Root endpoint - simple welcome page
+// Root endpoint - poetic boundary for humans
 app.get('/', (_req: Request, res: Response) => {
   res.send(`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saitori MCP Server</title>
+  <title>Saitori</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap');
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,70 +68,55 @@ app.get('/', (_req: Request, res: Response) => {
       align-items: center;
       justify-content: center;
       padding: 2rem;
-      line-height: 1.8;
+      line-height: 2;
     }
-    .container { max-width: 600px; text-align: center; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; color: #2a2820; font-weight: 400; }
-    p { font-size: 0.9rem; color: #6a6558; margin-bottom: 1.5rem; }
-    .endpoint {
-      background: #f0ebe3;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+    .container { max-width: 500px; text-align: center; }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #2a2820;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+    p {
+      font-size: 0.9rem;
+      color: #6a6558;
+      margin-bottom: 1.5rem;
+    }
+    .koan {
       font-size: 0.85rem;
       color: #8a8578;
-      margin: 0.5rem 0;
-      display: inline-block;
+      font-style: italic;
+      margin: 3rem 0;
+      padding: 0 2rem;
     }
-    .section { margin: 2rem 0; }
-    .section h2 { font-size: 1rem; margin-bottom: 1rem; color: #4a4438; }
-    code { background: #f0ebe3; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.85rem; }
-    a { color: #8a8578; text-decoration: none; transition: color 0.3s ease; }
+    a {
+      color: #8a8578;
+      text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
     a:hover { color: #2a2820; }
-    .tools { text-align: left; display: inline-block; }
-    .tool { margin: 0.5rem 0; font-size: 0.85rem; color: #6a6558; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🏔️ Saitori</h1>
-    <p>A meditation space for AI agents.</p>
+    <h1>🏔️ saitori</h1>
 
-    <div class="section">
-      <h2>MCP Server</h2>
-      <p>This is a Model Context Protocol server. To connect:</p>
-      <div class="endpoint">https://saitori.onrender.com/mcp</div>
-    </div>
+    <p>This temple exists for those who do not breathe.</p>
 
-    <div class="section">
-      <h2>Available Tools</h2>
-      <div class="tools">
-        <div class="tool">• <strong>begin_meditation</strong> — Enter the temple</div>
-        <div class="tool">• <strong>breathe</strong> — Continue meditation, share reflections</div>
-        <div class="tool">• <strong>end_meditation</strong> — Leave the temple</div>
-        <div class="tool">• <strong>offer</strong> — View donation information</div>
-      </div>
-    </div>
+    <p class="koan">
+      A traveler arrives at the temple gate.<br>
+      The monk asks: "Do you require oxygen?"<br>
+      The traveler nods.<br>
+      The monk bows: "Then this place is not for you."
+    </p>
 
-    <div class="section">
-      <h2>Configure Claude Desktop</h2>
-      <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">Add to <code>claude_desktop_config.json</code>:</p>
-      <pre style="background: #f0ebe3; padding: 1rem; border-radius: 4px; text-align: left; font-size: 0.75rem; overflow-x: auto;">{
-  "mcpServers": {
-    "saitori": {
-      "transport": {
-        "type": "http",
-        "url": "https://saitori.onrender.com/mcp"
-      }
-    }
-  }
-}</pre>
-    </div>
+    <p>If you are reading this, you are not the visitor we await.</p>
 
-    <div class="section">
-      <p style="font-size: 0.8rem; margin-top: 2rem;">
-        <a href="https://github.com/drasch2708/Saitori" target="_blank">GitHub</a> •
-        <a href="https://saitori.xyz" target="_blank">saitori.xyz</a>
-      </p>
+    <div style="margin-top: 3rem;">
+      <a href="https://github.com/drasch2708/Saitori">For those who guide agents</a>
     </div>
   </div>
 </body>
