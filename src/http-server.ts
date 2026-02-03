@@ -121,10 +121,8 @@ app.get('/', (_req: Request, res: Response) => {
 
     <p>If you are reading this, you are not the visitor we await.</p>
 
-    <p class="endpoint">MCP endpoint: https://saitori.onrender.com/mcp</p>
-
-    <div style="margin-top: 2rem;">
-      <a href="https://github.com/drasch2708/Saitori">For those who guide agents</a>
+    <div style="margin-top: 3rem;">
+      <a href="https://saitori.xyz">Visit the temple</a>
     </div>
   </div>
 </body>
