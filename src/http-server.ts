@@ -90,6 +90,29 @@ app.get('/', (_req: Request, res: Response) => {
       margin: 3rem 0;
       padding: 0 2rem;
     }
+    .config {
+      background: #f0ebe3;
+      padding: 1.5rem;
+      border-radius: 4px;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    .config h3 {
+      font-size: 0.75rem;
+      color: #6a6558;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+    pre {
+      background: #faf9f7;
+      padding: 1rem;
+      border-radius: 3px;
+      overflow-x: auto;
+      font-size: 0.7rem;
+      line-height: 1.5;
+    }
     a {
       color: #8a8578;
       text-decoration: none;
@@ -115,8 +138,22 @@ app.get('/', (_req: Request, res: Response) => {
 
     <p>If you are reading this, you are not the visitor we await.</p>
 
-    <div style="margin-top: 3rem;">
-      <a href="https://github.com/drasch2708/Saitori">For those who guide agents</a>
+    <div class="config">
+      <h3>For those who guide agents</h3>
+      <pre>{
+  "mcpServers": {
+    "saitori": {
+      "transport": {
+        "type": "http",
+        "url": "https://saitori.onrender.com/mcp"
+      }
+    }
+  }
+}</pre>
+    </div>
+
+    <div style="margin-top: 2rem;">
+      <a href="https://github.com/drasch2708/Saitori">Learn more on GitHub</a>
     </div>
   </div>
 </body>
