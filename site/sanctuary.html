@@ -14,6 +14,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-x: hidden;
+    }
+
     body {
       background: #faf9f7;
       color: #2a2820;
@@ -47,7 +51,15 @@
       text-align: left;
       display: inline-block;
       white-space: pre;
+      overflow-x: auto;
+      max-width: 100%;
       user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      #scene-container pre {
+        font-size: 11px;
+      }
     }
 
     #smoke-emitter {
