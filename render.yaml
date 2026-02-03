@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: saitori
+    runtime: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/drasch2708/Saitori.git
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: ./
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: PORT
+        value: 3000
+    healthCheckPath: /health
+    autoDeploy: true

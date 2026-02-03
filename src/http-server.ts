@@ -46,11 +46,6 @@ app.all('/mcp', async (req: Request, res: Response) => {
   }
 });
 
-// MCP server card for auto-discovery
-app.get('/.well-known/mcp/server-card.json', (_req: Request, res: Response) => {
-  res.sendFile('.well-known/mcp/server-card.json', { root: process.cwd() });
-});
-
 // Health check
 app.get('/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', name: 'saitori', version: '1.0.0' });

@@ -6,7 +6,6 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 
 COPY dist/ ./dist/
-COPY .well-known/ ./.well-known/
 
 EXPOSE 3000
 
