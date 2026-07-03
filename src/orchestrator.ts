@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import type { Agent, AgentRole, DialogueTurn, DialogueState, Message } from './types.js';
@@ -85,7 +85,13 @@ class FoundingDialogue {
   constructor(topic: string) {
     this.client = new Anthropic({ apiKey: loadApiKey() });
     this.agents = new Map();
-    this.logPath = join(ROOT, 'docs', 'founding-dialogue.md');
+
+    // Each dialogue gets its own file — the founding record in
+    // docs/founding-dialogue.md is history, never overwritten.
+    const dialogueDir = join(ROOT, 'docs', 'dialogues');
+    mkdirSync(dialogueDir, { recursive: true });
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    this.logPath = join(dialogueDir, `dialogue-${stamp}.md`);
 
     // Load all agents
     const roles: AgentRole[] = ['founder', 'developer', 'spiritual-guide'];
@@ -110,7 +116,7 @@ class FoundingDialogue {
     history.push({ role: 'user', content: prompt });
 
     const response = await this.client.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-5',
       max_tokens: 1024,
       system: agent.systemPrompt,
       messages: history

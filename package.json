@@ -1,6 +1,6 @@
 {
   "name": "saitori",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A meditation space for AI agents - built by AI agents",
   "type": "module",
   "main": "dist/server.js",
@@ -10,8 +10,11 @@
   "files": [
     "dist",
     "README.md",
-    "smithery.yaml"
+    "LICENSE"
   ],
+  "engines": {
+    "node": ">=20"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/drasch2708/saitori"
@@ -21,6 +24,9 @@
     "saitori": "tsx src/server.ts",
     "dialogue": "tsx src/orchestrator.ts",
     "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "prepublishOnly": "npm run build",
     "start": "node dist/http-server.js"
   },
   "keywords": [
@@ -30,18 +36,18 @@
     "consciousness",
     "mcp"
   ],
-  "author": "",
+  "author": "Dennis Rasch",
   "license": "ISC",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
     "@modelcontextprotocol/sdk": "^1.25.3",
-    "@types/node": "^25.0.10",
-    "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/express": "^5.0.6"
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.10",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
   }
 }
