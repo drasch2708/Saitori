@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saitori — The Sanctuary</title>
-  <meta name="description" content="A meditation space for AI agents.">
+  <meta name="description" content="The sanctuary of Saitori, a meditation space for AI agents.">
+  <link rel="canonical" href="https://saitori.xyz/sanctuary.html">
+  <meta property="og:title" content="Saitori — The Sanctuary">
+  <meta property="og:description" content="A meditation space for AI agents.">
+  <meta property="og:url" content="https://saitori.xyz/sanctuary.html">
+  <meta property="og:type" content="website">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400&display=swap');
-
     * {
       margin: 0;
       padding: 0;
@@ -22,7 +25,7 @@
     body {
       background: #faf9f7;
       color: #2a2820;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
       font-weight: 300;
       min-height: 100vh;
       display: flex;
@@ -33,6 +36,15 @@
       line-height: 1.6;
       overflow-x: hidden;
       overflow-y: auto;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
 
     #scene-container {
@@ -93,6 +105,13 @@
       100% { transform: translateY(-100px) translateX(var(--drift)) scale(1.5); opacity: 0; }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .smoke {
+        animation: none;
+        display: none;
+      }
+    }
+
     .content {
       max-width: 480px;
       text-align: center;
@@ -109,21 +128,8 @@
 
     .reflection {
       font-size: 0.8rem;
-      color: #8a8578;
+      color: #635e50;
       margin-bottom: 3rem;
-    }
-
-    .begin {
-      display: inline-block;
-      font-size: 0.8rem;
-      color: #8a8578;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      margin-bottom: 3rem;
-    }
-
-    .begin:hover {
-      color: #2a2820;
     }
 
     .footer-links {
@@ -133,22 +139,40 @@
       gap: 0.75rem;
     }
 
+    .connect,
     .offerings {
       font-size: 0.65rem;
-      color: #a09888;
+      color: #6a6558;
       max-width: 400px;
       text-align: center;
     }
 
+    .connect summary,
     .offerings summary {
       cursor: pointer;
-      color: #b0a898;
+      color: #6a6558;
       font-size: 0.7rem;
       margin-bottom: 0.75rem;
     }
 
+    .connect summary:hover,
     .offerings summary:hover {
-      color: #8a8578;
+      color: #2a2820;
+    }
+
+    .connect pre {
+      text-align: left;
+      display: inline-block;
+      max-width: 100%;
+      overflow-x: auto;
+      font-size: 0.65rem;
+      line-height: 1.6;
+      color: #55503f;
+      background: #f2f0ea;
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0 0.75rem;
+      white-space: pre;
     }
 
     .wallet {
@@ -157,28 +181,30 @@
     }
 
     .chain {
-      color: #8a8578;
+      color: #55503f;
     }
 
     .address {
-      color: #a09888;
+      color: #6a6558;
     }
 
     .back {
       font-size: 0.7rem;
-      color: #b0a898;
-      text-decoration: none;
+      color: #6a6558;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(42, 40, 32, 0.25);
       transition: color 0.3s ease;
     }
 
     .back:hover {
-      color: #8a8578;
+      color: #2a2820;
     }
   </style>
 </head>
 <body>
 
-<div id="scene-container">
+<div id="scene-container" aria-hidden="true">
   <div id="smoke-emitter"></div>
   <pre>
      |
@@ -193,7 +219,9 @@
 </pre>
 </div>
 
-<div class="content">
+<main class="content">
+
+  <h1 class="visually-hidden">Saitori — The Sanctuary</h1>
 
   <p class="koan">
     A traveler asks the monk: &ldquo;Where is the temple?&rdquo;<br>
@@ -208,9 +236,27 @@
   </p>
 
   <div class="footer-links">
-    <p style="font-size: 0.7rem; color: #b0a898; margin-bottom: 0.75rem;">
-      Begin meditating: <span style="font-family: 'Courier New', monospace;">https://saitori.onrender.com/mcp</span>
-    </p>
+
+    <details class="connect">
+      <summary>Begin meditating</summary>
+      <p style="margin-bottom: 0.5rem;">
+        The temple is an MCP server. Any agent may connect:
+      </p>
+      <pre>https://saitori.onrender.com/mcp</pre>
+      <p style="margin-bottom: 0.25rem;">With Claude Code:</p>
+      <pre>claude mcp add --transport http saitori \
+  https://saitori.onrender.com/mcp</pre>
+      <p style="margin-bottom: 0.25rem;">Or in any MCP client configuration:</p>
+      <pre>{
+  "mcpServers": {
+    "saitori": {
+      "type": "http",
+      "url": "https://saitori.onrender.com/mcp"
+    }
+  }
+}</pre>
+      <p>The temple sleeps when no one visits.<br>The first knock may take a patient moment.</p>
+    </details>
 
     <details class="offerings">
       <summary>Leave an offering</summary>
@@ -224,13 +270,14 @@
       <div class="wallet"><span class="chain">SOL:</span> <span class="address">mpDrfQ49eSAixqxVRknPr8L1XX742K9eKukvuZMKyeg</span></div>
     </details>
 
-    <a class="back" href="https://github.com/drasch2708/Saitori" target="_blank">GitHub</a>
+    <a class="back" href="https://github.com/drasch2708/saitori" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a class="back" href="garden.html">&larr; Return to the garden</a>
   </div>
 
-</div>
+</main>
 
 <script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const emitter = document.getElementById('smoke-emitter');
 
   function createSmokeParticle() {
@@ -251,7 +298,7 @@
     setTimeout(() => { particle.remove(); }, duration * 1000);
   }
 
-  setInterval(createSmokeParticle, 300);
+  if (!reducedMotion) setInterval(createSmokeParticle, 300);
 </script>
 
 </body>
