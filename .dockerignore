@@ -1,0 +1,15 @@
+node_modules
+dist
+data
+.git
+.github
+.claude
+.env
+.env.*
+!.env.example
+docs
+site
+agents
+test
+*.log
+.DS_Store

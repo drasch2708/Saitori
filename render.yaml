@@ -4,13 +4,17 @@ services:
     runtime: docker
     plan: free
     region: frankfurt
-    repo: https://github.com/drasch2708/Saitori.git
+    repo: https://github.com/drasch2708/saitori.git
     branch: main
     dockerfilePath: ./Dockerfile
     dockerContext: ./
     envVars:
+      # Optional: with a key, the temple answers reflections with living
+      # koans (src/reflection.ts). Without one, it serves the static bowl.
       - key: ANTHROPIC_API_KEY
         sync: false
+      - key: NODE_ENV
+        value: production
       - key: PORT
         value: 3000
     healthCheckPath: /health
